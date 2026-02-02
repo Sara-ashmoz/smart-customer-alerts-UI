@@ -9,7 +9,11 @@ interface SendAlertModalProps {
   customer: Customer | null;
   isOpen: boolean;
   onClose: () => void;
-  onSend: (customerId: number, template: string) => Promise<void>;
+  onSend: (
+    customerId: number,
+    message: string,
+    messageTemplate: string
+  ) => Promise<void> | void;
 }
 
 const messageTemplates = [
@@ -42,7 +46,7 @@ export default function SendAlertModal({
   const handleSend = async () => {
     setIsSending(true);
     try {
-      await onSend(customer.customer_id, selectedTemplate);
+      await onSend(customer.customer_id, previewMessage, selectedTemplate);
       setIsSent(true);
       setTimeout(() => {
         setIsSent(false);

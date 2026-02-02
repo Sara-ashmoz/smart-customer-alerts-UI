@@ -51,8 +51,12 @@ export default function Home() {
   };
 
   // Function to handle sending an alert
-  const handleSendAlert = async (customerId: number, messageTemplate: string) => {
-    await sendAlert(customerId, messageTemplate);
+  const handleSendAlert = async (
+    customerId: number,
+    message: string,
+    messageTemplate: string
+  ) => {
+    await sendAlert(customerId, message, messageTemplate);
     setAlertRefreshTrigger((prev) => prev + 1);
   };
 

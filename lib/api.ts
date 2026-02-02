@@ -10,7 +10,7 @@ export async function fetchCustomers() {
   return response.json();
 }
 
-export async function sendAlert(customerId: number, messageTemplate: string) {
+export async function sendAlert(customerId: number, message: string, messageTemplate?: string) {
   const response = await fetch(`${API_BASE_URL}/alerts/send`, {
     method: "POST",
     headers: {
@@ -18,10 +18,11 @@ export async function sendAlert(customerId: number, messageTemplate: string) {
     },
     body: JSON.stringify({
       customer_id: customerId,
+      message: message,
       message_template: messageTemplate,
     }),
   });
-  
+
   if (!response.ok) {
     throw new Error("Failed to send alert");
   }
@@ -35,3 +36,4 @@ export async function fetchAlerts() {
   }
   return response.json();
 }
+
