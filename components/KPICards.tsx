@@ -5,6 +5,7 @@ import { formatCurrency } from "@/lib/utils";
 interface KPICardsProps {
   totalCustomers: number;
   highRiskCustomers: number;
+  mediumRiskCustomers: number;
   overdueFound: number;
   totalOpenDebt: number;
 }
@@ -12,6 +13,7 @@ interface KPICardsProps {
 export default function KPICards({
   totalCustomers,
   highRiskCustomers,
+  mediumRiskCustomers,
   overdueFound,
   totalOpenDebt,
 }: KPICardsProps) {
@@ -27,6 +29,11 @@ export default function KPICards({
       color: "text-red-600",
     },
     {
+      label: "Medium Risk Customers",
+      value: mediumRiskCustomers.toString(),
+      color: "text-yellow-600",
+    },
+    {
       label: "Overdue Found",
       value: overdueFound.toString(),
       color: "text-orange-600",
@@ -39,7 +46,7 @@ export default function KPICards({
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
       {cards.map((card, index) => (
         <div
           key={index}
