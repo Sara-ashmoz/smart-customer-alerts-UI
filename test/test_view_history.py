@@ -1,19 +1,15 @@
-from playwright.sync_api import expect
+from test.pages.dashboard_page import DashboardPage
+from test.pages.history_modal import HistoryModal
 
-def test_view_history_modal_opens_and_closes(page):
-    page.goto("http://localhost:3000", wait_until="domcontentloaded")
+def test_view_history_modal_opens_and_closes(dashboard_page):
+    page = dashboard_page
 
-    # פתיחת המודאל
-    page.get_by_role("button", name="View History").click()
+    dashboard = DashboardPage(page)
+    history = HistoryModal(page)
 
-    # בדיקה: כותרת Alert History קיימת
-    header = page.get_by_role("heading", name="Alert History")
-    expect(header).to_be_visible()
+    dashboard.open_history()
+    history.expect_open()
+    history.close()
 
-    # סגירת המודאל
-    page.get_by_role("button", name="Close").click()
-
-    # בדיקה: המודאל נסגר
-    expect(header).not_to_be_visible()
 
 
