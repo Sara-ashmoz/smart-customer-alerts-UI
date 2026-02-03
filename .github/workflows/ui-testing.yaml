@@ -57,4 +57,4 @@ jobs:
         HEADLESS: true
         APP_URL: https://sapindaceous-chagrinedly-camilla.ngrok-free.dev
       run: |
-        pytest test/ -v
+        pytest -v
