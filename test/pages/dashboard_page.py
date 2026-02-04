@@ -16,7 +16,7 @@ class DashboardPage:
         expect(self.h_history).to_be_visible()
 
     def open_send_alert_first_customer(self):
-        # expect(self.page.locator("table tbody tr").first ).to_be_visible(timeout=30000)
+        expect(self.page.locator("table tbody tr").first ).to_be_visible(timeout=30000)
 
     # רק עכשיו מחפשים כפתור
         btn = self.page.get_by_role(
