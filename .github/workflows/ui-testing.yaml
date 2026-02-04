@@ -61,6 +61,7 @@ jobs:
       env:
         HEADLESS: true
         APP_URL: https://sapindaceous-chagrinedly-camilla.ngrok-free.dev
+        NEXT_PUBLIC_API_BASE_URL: https://sapindaceous-chagrinedly-camilla.ngrok-free.dev
       run: |
         pytest test/ -v
 
