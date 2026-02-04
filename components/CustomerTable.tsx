@@ -50,7 +50,11 @@ export default function CustomerTable({
             {customers.map((customer) => (
               <tr
                 key={customer.customer_id}
-                className={customer.has_overdue ? "bg-orange-50" : ""}
+                className={
+                  customer.risk_level === "High" || customer.risk_level === "Medium"
+                    ? "bg-orange-50"
+                    : ""
+                }
               >
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
@@ -81,12 +85,16 @@ export default function CustomerTable({
                   {formatCurrency(customer.total_open_debt)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                  <button
-                    onClick={() => onSendAlert(customer)}
-                    className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md transition-colors font-medium"
-                  >
-                    Send Alert
-                  </button>
+                  {customer.risk_level === "Safe" || customer.risk_score === 0 ? (
+                    <span className="text-gray-400">—</span>
+                  ) : (
+                    <button
+                      onClick={() => onSendAlert(customer)}
+                      className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-md transition-colors font-medium"
+                    >
+                      Send Alert
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

@@ -54,6 +54,7 @@ export default function Filters({
             <option value="High">High</option>
             <option value="Medium">Medium</option>
             <option value="Low">Low</option>
+            <option value="Safe">Safe</option>
           </select>
         </div>
 
@@ -67,8 +68,8 @@ export default function Filters({
             onChange={(e) => setSortOrder(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            <option value="desc">High to Low</option>
-            <option value="asc">Low to High</option>
+            <option value="desc">High to Safe</option>
+            <option value="asc">Safe to High</option>
           </select>
         </div>
 

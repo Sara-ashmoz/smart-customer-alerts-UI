@@ -84,8 +84,14 @@ export default function Home() {
       }
 
       // Risk level filter
-      if (riskLevelFilter !== "All" && customer.risk_level !== riskLevelFilter) {
-        return false;
+      if (riskLevelFilter !== "All") {
+        if (riskLevelFilter === "Safe") {
+          if (!(customer.risk_level === "Safe" || customer.risk_score === 0)) {
+            return false;
+          }
+        } else if (customer.risk_level !== riskLevelFilter) {
+          return false;
+        }
       }
 
       // Overdue filter
@@ -158,6 +164,7 @@ export default function Home() {
             <KPICards
               totalCustomers={kpis.totalCustomers}
               highRiskCustomers={kpis.highRiskCustomers}
+              mediumRiskCustomers={kpis.mediumRiskCustomers}
               overdueFound={kpis.overdueFound}
               totalOpenDebt={kpis.totalOpenDebt}
             />

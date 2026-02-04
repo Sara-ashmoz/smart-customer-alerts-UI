@@ -3,6 +3,7 @@ import { Customer, RiskLevel } from "@/types";
 interface KPIData {
   totalCustomers: number;
   highRiskCustomers: number;
+  mediumRiskCustomers: number;
   overdueFound: number;
   totalOpenDebt: number;
 }
@@ -12,6 +13,7 @@ export function calculateKPIs(customers: Customer[]): KPIData {
   return {
     totalCustomers: customers.length,
     highRiskCustomers: customers.filter(c => c.risk_level === "High").length,
+    mediumRiskCustomers: customers.filter(c => c.risk_level === "Medium").length,
     overdueFound: customers.filter(c => c.has_overdue).length,
     totalOpenDebt: customers.reduce((sum, c) => sum + c.total_open_debt, 0),
   };
@@ -43,10 +45,12 @@ export function formatTimestamp(timestamp: string): string {
 export function getRiskLevelColor(level: RiskLevel): string {
   switch (level) {
     case "High":
-      return "bg-red-100 text-red-800";
+      return "bg-red-50 text-red-800 border border-red-200";
     case "Medium":
-      return "bg-yellow-100 text-yellow-800";
+      return "bg-orange-50 text-orange-800 border border-orange-200";
     case "Low":
+      return "bg-green-100 text-green-800";
+    case "Safe":
       return "bg-green-100 text-green-800";
     default:
       return "bg-gray-100 text-gray-800";
