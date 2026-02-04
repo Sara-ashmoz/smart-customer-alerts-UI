@@ -1,6 +1,6 @@
-// API utility functions for communicating with the backend
+// API utility functions for communicating with the Next.js backend
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+const API_BASE_URL = "/api";
 
 export async function fetchCustomers() {
   const response = await fetch(`${API_BASE_URL}/risk/customers`);
