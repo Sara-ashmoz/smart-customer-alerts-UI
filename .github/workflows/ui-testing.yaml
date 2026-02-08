@@ -35,7 +35,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with:
-        fetch-depth: 1  # Fetch only the latest commit to speed up the checkout process
+        fetch-depth: 1  
         repository: Sara-ashmoz/smart-customer-alerts-UI 
       
     - name: Set up Python
@@ -52,11 +52,7 @@ jobs:
       run: |
         playwright install --with-deps
       
-    - name: Start backend
-      run: |
-        uvicorn app:app --host 0.0.0.0 --port 8000 &
-
-        
+  
     - name: Run Playwright tests
       env:
         HEADLESS: true
