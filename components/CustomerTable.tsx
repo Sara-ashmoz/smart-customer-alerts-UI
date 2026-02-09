@@ -61,7 +61,7 @@ export default function CustomerTable({
                     <div className="text-sm font-medium text-gray-900">
                       {customer.customer_name}
                     </div>
-                    {customer.has_overdue && (
+                    {(customer.has_overdue || customer.risk_level === "Medium") && (
                       <span className="ml-2 text-xs text-orange-600">⚠️</span>
                     )}
                   </div>
