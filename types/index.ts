@@ -1,6 +1,6 @@
 // Type definitions for API data structures
 
-export type RiskLevel = "Low" | "Medium" | "High";
+export type RiskLevel = "Safe" | "Low" | "Medium" | "High";
 
 export interface Customer {
   customer_id: number;
