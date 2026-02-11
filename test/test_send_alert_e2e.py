@@ -6,6 +6,7 @@ def test_send_alert_e2e_success(dashboard_page):
     dashboard_page.screenshot(path='before.png')
     page = dashboard_page
 
+
     try:
         visit_btn = page.get_by_role("button", name="Visit Site")
         if visit_btn.is_visible():
