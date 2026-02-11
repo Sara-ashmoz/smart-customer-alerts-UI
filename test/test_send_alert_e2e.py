@@ -1,3 +1,4 @@
+from time import sleep
 from test.pages.dashboard_page import DashboardPage
 from test.pages.send_alert_modal import SendAlertModal
 
@@ -17,10 +18,13 @@ def test_send_alert_e2e_success(dashboard_page):
 
     dashboard = DashboardPage(page)
     send_modal = SendAlertModal(page)
+    sleep(5)
 
     dashboard.open_send_alert_first_customer()
     dashboard_page.screenshot(path='after_open_send_alert.png')
     send_modal.expect_open()
+    sleep(5)
 
     send_modal.click_send()
     send_modal.expect_success()
+    sleep(5)
